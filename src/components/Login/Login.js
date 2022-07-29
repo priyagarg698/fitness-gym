@@ -4,6 +4,8 @@ import "./Login.css";
 
 export const Login = () => {
   const { dispatch } = useContext(AuthContext);
+
+  //set the default values 
   const initialState = {
     username: "",
     password: "",
@@ -13,13 +15,15 @@ export const Login = () => {
 
   const [data, setData] = useState(initialState);
 
+  //updating the state on input changes
   const handleInputChange = (event) => {
     setData({
       ...data,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
 
+  //Allow user to login to the app when credentials matches
   const handleFormSubmit = (event) => {
     event.preventDefault();
     setData({

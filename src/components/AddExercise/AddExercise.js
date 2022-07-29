@@ -3,6 +3,8 @@ import { ExerciseContext } from "../Home/Home";
 import "./AddExercise.css"
 
 const AddExercise = (props) => {
+
+  //Fetch the values from Home component
   const { state, dispatch } = useContext(ExerciseContext);
 
   const [title, setTitle] = useState("");

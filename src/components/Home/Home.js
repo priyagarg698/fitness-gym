@@ -4,6 +4,7 @@ import "./Home.css";
 
 export const ExerciseContext = createContext();
 
+//set the default values
 const initialState = {
   exerciseData: [],
   isFetching: false,
@@ -12,8 +13,8 @@ const initialState = {
   exerciseHasError: false,
 };
 
+//Fetch the gym exercise list and add the new exercise to the list
 const reducer = (state, action) => {
-  console.log("LLLLLLLLLLLLLLLLLLLLLL", action.type, state)
   switch (action.type) {
     case "FETCH_EXERCISE_REQUEST":
       return {
@@ -40,7 +41,6 @@ const reducer = (state, action) => {
         exerciseHasError: false,
       }
     case "ADD_EXERCISE_SUCCESS":
-      console.log("KKKKKKKKKKKKKKKKKKKKKKKK", action.payload)
       return {
         ...state,
         isDataSubmitting: false,
@@ -59,12 +59,15 @@ const reducer = (state, action) => {
 
 export const Home = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  //Vairable to hide and show the overlay to add class
   const [isAddExerciseModalVisible, setAddExerciseModalVisibility] = useState(false);
 
   const toggleAddExercise = () => {
     setAddExerciseModalVisibility(!isAddExerciseModalVisible);
   }
 
+  //Request the exercise list
   useEffect(() => {
     dispatch({
       type: "FETCH_EXERCISE_REQUEST"

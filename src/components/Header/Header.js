@@ -3,6 +3,7 @@ import { AuthContext } from "../../App";
 import "./Header.css"
 
 export const Header = () => {
+  //Fetch the values from AuthContext 
   const { state, dispatch } = useContext(AuthContext);
 
   return (
