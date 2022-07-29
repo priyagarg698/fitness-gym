@@ -14,3 +14,7 @@ yarn install
 yarn start
 ```
 "# fitness-gym" 
+
+To login into the app use 
+username: admin
+password: admin
