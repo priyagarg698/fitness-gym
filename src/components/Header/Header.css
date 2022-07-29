@@ -1,0 +1,25 @@
+.main__header{
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: #5e5c5c;
+    top: 0;
+  }
+  
+  
+  .main__header h1{
+    color: white;
+  }
+  
+  .main__header button{
+    color: white;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .main__header button:hover{
+    cursor: pointer;
+  }

@@ -1,0 +1,65 @@
+.modal {
+    background: rgba(0,0,0,0.1);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+  }
+  .modal.off {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+ 
+  .modal-overlay {
+    width: 100%;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 0 1px 4px rgb(197, 197, 197);
+    border-radius: 4px;
+    padding: 30px;
+  }
+  .modal-overlay.small {
+    max-width: 350px;
+    overflow: hidden;
+  }
+  
+  
+  .modal-form-inputs {
+    overflow: auto;
+  }
+  
+  .modal-form-inputs input[type="text"] {
+    width: 95%;
+  }
+  
+  .button {
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    outline: none;
+    border-radius: 4px;
+  }
+  
+  
+  .button-default {
+    background: transparent;
+    border-color: #ddd;
+    color: #666666;
+  }
+  .button-primary {
+    background: #299adb;
+    color: #fff;
+  }
+  
+  .button:disabled {
+    color: white;
+    border-color: gray;
+    background-color: gray;
+  }
+
+  .form-action{
+    display: flex;
+    justify-content: space-between;
+  }
+  

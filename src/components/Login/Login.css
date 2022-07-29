@@ -1,0 +1,47 @@
+.login__section{
+    display: flex;
+    height: calc(100vh - 60px);
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 60px;
+  }
+  
+
+  
+  .login__section .container form{
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  input[type="text"], input[type="password"]{
+    height: 40px;
+    border-radius: 5px;
+    border: .5px solid rgb(143, 143, 143);
+    font-size: 15px;
+  }
+  
+  label{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login__section button{
+    height: 40px;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #5e5c5c;
+    color: rgb(255, 255, 255);
+  }
+  
+  .login__section button:hover{
+    background-color: #9c9a9a;
+    cursor: pointer;
+  }
+  
+  
+  .login__section button:focus{
+    outline: none !important;
+  }
+  
