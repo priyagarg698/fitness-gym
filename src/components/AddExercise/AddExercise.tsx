@@ -2,15 +2,16 @@ import React, {useContext, useState} from "react";
 import { ExerciseContext } from "../Home/Home";
 import "./AddExercise.css"
 
-const AddExercise = (props) => {
+const AddExercise = (props: { onClose: () => any; show: any; }) => {
 
   //Fetch the values from Home component
   const { state, dispatch } = useContext(ExerciseContext);
 
   const [title, setTitle] = useState("");
 
-  const onClose = (e) => {
-    props.onClose && props.onClose(e);
+  const onClose = () => {
+    setTitle("");
+    props.onClose && props.onClose();
   };
 
   const isButtonDisabled = title === "";

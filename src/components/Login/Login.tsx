@@ -5,8 +5,15 @@ import "./Login.css";
 export const Login = () => {
   const { dispatch } = useContext(AuthContext);
 
+  type InitialState = {
+    username: string,
+    password: string,
+    isSubmitting: boolean,
+    errorMessage: string | null,
+  }
+
   //set the default values 
-  const initialState = {
+  const initialState :InitialState = {
     username: "",
     password: "",
     isSubmitting: false,
@@ -16,7 +23,7 @@ export const Login = () => {
   const [data, setData] = useState(initialState);
 
   //updating the state on input changes
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: { target: { name: any; value: any; }; }) => {
     setData({
       ...data,
       [event.target.name]: event.target.value
@@ -24,7 +31,7 @@ export const Login = () => {
   };
 
   //Allow user to login to the app when credentials matches
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     setData({
       ...data,
@@ -43,7 +50,7 @@ export const Login = () => {
       } else {
         throw new Error("Login failed");
       }
-    } catch (error) {
+    } catch (error: any) {
       setData({
         ...data,
         isSubmitting: false,

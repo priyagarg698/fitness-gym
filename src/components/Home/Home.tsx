@@ -2,10 +2,16 @@ import React, {useEffect, useReducer, useState, createContext} from "react";
 import AddExercise from "../AddExercise/AddExercise";
 import "./Home.css";
 
-export const ExerciseContext = createContext();
+type InitialState = {
+  exerciseData: any,
+  isFetching: boolean,
+  hasError: boolean,
+  isDataSubmitting: boolean,
+  exerciseHasError: boolean
+};
 
 //set the default values
-const initialState = {
+const initialState : InitialState= {
   exerciseData: [],
   isFetching: false,
   hasError: false,
@@ -13,8 +19,22 @@ const initialState = {
   exerciseHasError: false,
 };
 
+type Action = {
+  type: "FETCH_EXERCISE_REQUEST" | "FETCH_EXERCISE_SUCCESS" | "FETCH_EXERCISE_FAILURE" | "ADD_EXERCISE_REQUEST" | "ADD_EXERCISE_SUCCESS" | "ADD_EXERCISE_FAILURE",
+  payload?: any,
+  isFetching?: boolean,
+  hasError?: boolean,
+  isDataSubmitting?: boolean,
+  exerciseHasError?: boolean
+}
+
+
+export const ExerciseContext = createContext<{state: InitialState; dispatch: React.Dispatch<Action>}>({
+  state: initialState,
+  dispatch: ()=>{}
+});
 //Fetch the gym exercise list and add the new exercise to the list
-const reducer = (state, action) => {
+const reducer = (state: InitialState, action: Action) => {
   switch (action.type) {
     case "FETCH_EXERCISE_REQUEST":
       return {
@@ -110,7 +130,7 @@ export const Home = () => {
       ) : (
         <>
           {state.exerciseData.length > 0 &&
-            state.exerciseData.map((ele, index) => (
+            state.exerciseData.map((ele: { name: string}, index: React.Key | null | undefined) => (
               <h2 key={index}>{ele.name}</h2>
             ))}
         </>

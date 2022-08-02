@@ -1,19 +1,34 @@
-import React, {createContext, useReducer, useEffect} from "react";
+import React, {createContext, useReducer} from "react";
 import "./App.css";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 
-export const AuthContext = createContext();
+
+type InitialState = {
+  isAuthenticated: boolean,
+  user: {} | string | null
+}
 
 //Set the default value
-const initialState = {
+const initialState : InitialState = {
   isAuthenticated: false,
   user: null
 };
 
+type Action = {
+  type: "LOGIN" | "LOGOUT",
+  payload?: any
+}
+
+export const AuthContext = createContext<{state: InitialState; dispatch: React.Dispatch<Action>}>({
+  state: initialState,
+  dispatch: ()=>{}
+});
+
+
 //Created the reducer with different action types to allow user to login and logout
-const reducer = (state, action) => {
+const reducer = (state : InitialState, action : Action) => {
   switch (action.type) {
     case "LOGIN":
       //set the user credentials in the localstorage as {user:admin}
@@ -39,18 +54,6 @@ const reducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  //get the credentails from the localstorage
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user') || null)
-    if(user){
-      dispatch({
-        type: 'LOGIN',
-        payload: {
-          user
-        }
-      })
-    }
-  }, [])
   return (
     //useContext to pass props to the child components
     <AuthContext.Provider
